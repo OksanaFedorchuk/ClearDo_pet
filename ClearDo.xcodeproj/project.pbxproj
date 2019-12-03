@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D722C5B723968225008F9F50 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722C5B623968225008F9F50 /* ReusableCell.swift */; };
 		D77C3080238BDDDF0058912B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C307F238BDDDF0058912B /* AppDelegate.swift */; };
 		D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C3081238BDDDF0058912B /* SceneDelegate.swift */; };
 		D77C3084238BDDDF0058912B /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C3083238BDDDF0058912B /* TodoListViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D722C5B623968225008F9F50 /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		D77C307C238BDDDF0058912B /* ClearDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClearDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D77C307F238BDDDF0058912B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D77C3081238BDDDF0058912B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				D77C3088238BDDE10058912B /* Assets.xcassets */,
 				D77C308A238BDDE10058912B /* LaunchScreen.storyboard */,
 				D77C308D238BDDE10058912B /* Info.plist */,
+				D722C5B623968225008F9F50 /* ReusableCell.swift */,
 			);
 			path = ClearDo;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D722C5B723968225008F9F50 /* ReusableCell.swift in Sources */,
 				D77C3084238BDDDF0058912B /* TodoListViewController.swift in Sources */,
 				D77C3080238BDDDF0058912B /* AppDelegate.swift in Sources */,
 				D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */,

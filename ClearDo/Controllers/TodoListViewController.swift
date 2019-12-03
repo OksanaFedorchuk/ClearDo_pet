@@ -13,8 +13,21 @@ class TodoListViewController: UITableViewController {
     let itemArray = ["Dog", "Cat", "Donkey"]
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureTapGesture()
+        
+    }
+    
+    func configureTapGesture() {
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TodoListViewController.handleTap))
+        view.addGestureRecognizer(tapGesture)
+            
+    }
+    
+    @objc func handleTap() {
+        view.endEditing(true)
     }
     
     // TableView data source methods
@@ -31,7 +44,6 @@ class TodoListViewController: UITableViewController {
 
     // Table view delegate methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(itemArray[indexPath.row])
         
         if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
@@ -41,6 +53,11 @@ class TodoListViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: false)
     }
+}
 
+
+extension TodoListViewController: UITextFieldDelegate {
+    
+    
 }
 
