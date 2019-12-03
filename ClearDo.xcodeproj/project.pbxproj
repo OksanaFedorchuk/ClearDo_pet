@@ -37,6 +37,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D70FE2022396658800AE6312 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D70FE203239665B900AE6312 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D77C3085238BDDDF0058912B /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D70FE205239665FC00AE6312 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D77C3083238BDDDF0058912B /* TodoListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		D77C3073238BDDDF0058912B = {
 			isa = PBXGroup;
 			children = (
@@ -58,8 +81,9 @@
 			children = (
 				D77C307F238BDDDF0058912B /* AppDelegate.swift */,
 				D77C3081238BDDDF0058912B /* SceneDelegate.swift */,
-				D77C3083238BDDDF0058912B /* TodoListViewController.swift */,
-				D77C3085238BDDDF0058912B /* Main.storyboard */,
+				D70FE2022396658800AE6312 /* Models */,
+				D70FE203239665B900AE6312 /* Views */,
+				D70FE205239665FC00AE6312 /* Controllers */,
 				D77C3088238BDDE10058912B /* Assets.xcassets */,
 				D77C308A238BDDE10058912B /* LaunchScreen.storyboard */,
 				D77C308D238BDDE10058912B /* Info.plist */,
