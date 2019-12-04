@@ -10,19 +10,19 @@ import UIKit
 
 class ReusableCell: UITableViewCell, UITextFieldDelegate {
 
-    @IBOutlet weak var todoTextfield: UITextField!
-    
+    var delegate: UITextFieldDelegate? {
+        didSet {
+            todoTextfield.delegate = delegate
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureTextFields()
-    }
-    
-    private func configureTextFields() {
+
         todoTextfield.delegate = self
+        todoTextfield.becomeFirstResponder()
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+    @IBOutlet weak var todoTextfield: UITextField!
+    
+    
 }
