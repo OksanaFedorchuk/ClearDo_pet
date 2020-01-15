@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B53751B59F22032CE315085D /* Pods_ClearDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E059C6149EEE8E5C86489E3 /* Pods_ClearDo.framework */; };
 		D722C5B723968225008F9F50 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722C5B623968225008F9F50 /* ReusableCell.swift */; };
 		D77C3080238BDDDF0058912B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C307F238BDDDF0058912B /* AppDelegate.swift */; };
 		D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C3081238BDDDF0058912B /* SceneDelegate.swift */; };
@@ -14,9 +15,14 @@
 		D77C3087238BDDDF0058912B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D77C3085238BDDDF0058912B /* Main.storyboard */; };
 		D77C3089238BDDE10058912B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D77C3088238BDDE10058912B /* Assets.xcassets */; };
 		D77C308C238BDDE10058912B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D77C308A238BDDE10058912B /* LaunchScreen.storyboard */; };
+		D7BC988323CE16CA009FAC72 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC988223CE16CA009FAC72 /* TasksViewController.swift */; };
+		D7BC988523CE33C4009FAC72 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC988423CE33C4009FAC72 /* TaskCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E059C6149EEE8E5C86489E3 /* Pods_ClearDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClearDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EEDBD0BD21CB272A314F00D /* Pods-ClearDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClearDo.debug.xcconfig"; path = "Target Support Files/Pods-ClearDo/Pods-ClearDo.debug.xcconfig"; sourceTree = "<group>"; };
+		4D10196DE36720D678FD49D6 /* Pods-ClearDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClearDo.release.xcconfig"; path = "Target Support Files/Pods-ClearDo/Pods-ClearDo.release.xcconfig"; sourceTree = "<group>"; };
 		D722C5B623968225008F9F50 /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		D77C307C238BDDDF0058912B /* ClearDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClearDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D77C307F238BDDDF0058912B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +32,8 @@
 		D77C3088238BDDE10058912B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D77C308B238BDDE10058912B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D77C308D238BDDE10058912B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7BC988223CE16CA009FAC72 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = SOURCE_ROOT; };
+		D7BC988423CE33C4009FAC72 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,12 +41,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53751B59F22032CE315085D /* Pods_ClearDo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EAEFE994B5C41BB43B4CC4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3EEDBD0BD21CB272A314F00D /* Pods-ClearDo.debug.xcconfig */,
+				4D10196DE36720D678FD49D6 /* Pods-ClearDo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A78EB67BDC42FBD0663BAC57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E059C6149EEE8E5C86489E3 /* Pods_ClearDo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D70FE2022396658800AE6312 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				D77C3083238BDDDF0058912B /* TodoListViewController.swift */,
+				D7BC988223CE16CA009FAC72 /* TasksViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -67,6 +94,8 @@
 			children = (
 				D77C307E238BDDDF0058912B /* ClearDo */,
 				D77C307D238BDDDF0058912B /* Products */,
+				7EAEFE994B5C41BB43B4CC4E /* Pods */,
+				A78EB67BDC42FBD0663BAC57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,10 +115,11 @@
 				D70FE2022396658800AE6312 /* Models */,
 				D70FE203239665B900AE6312 /* Views */,
 				D70FE205239665FC00AE6312 /* Controllers */,
+				D722C5B623968225008F9F50 /* ReusableCell.swift */,
+				D7BC988423CE33C4009FAC72 /* TaskCell.swift */,
 				D77C3088238BDDE10058912B /* Assets.xcassets */,
 				D77C308A238BDDE10058912B /* LaunchScreen.storyboard */,
 				D77C308D238BDDE10058912B /* Info.plist */,
-				D722C5B623968225008F9F50 /* ReusableCell.swift */,
 			);
 			path = ClearDo;
 			sourceTree = "<group>";
@@ -101,9 +131,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D77C3090238BDDE10058912B /* Build configuration list for PBXNativeTarget "ClearDo" */;
 			buildPhases = (
+				40CCE198D159D7B6D9F4B058 /* [CP] Check Pods Manifest.lock */,
 				D77C3078238BDDDF0058912B /* Sources */,
 				D77C3079238BDDDF0058912B /* Frameworks */,
 				D77C307A238BDDDF0058912B /* Resources */,
+				449156CB96FD668002002E53 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,6 +192,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		40CCE198D159D7B6D9F4B058 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ClearDo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		449156CB96FD668002002E53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ClearDo/Pods-ClearDo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ClearDo/Pods-ClearDo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ClearDo/Pods-ClearDo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D77C3078238BDDDF0058912B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -167,7 +241,9 @@
 			files = (
 				D722C5B723968225008F9F50 /* ReusableCell.swift in Sources */,
 				D77C3084238BDDDF0058912B /* TodoListViewController.swift in Sources */,
+				D7BC988323CE16CA009FAC72 /* TasksViewController.swift in Sources */,
 				D77C3080238BDDDF0058912B /* AppDelegate.swift in Sources */,
+				D7BC988523CE33C4009FAC72 /* TaskCell.swift in Sources */,
 				D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +386,7 @@
 		};
 		D77C3091238BDDE10058912B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EEDBD0BD21CB272A314F00D /* Pods-ClearDo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -328,6 +405,7 @@
 		};
 		D77C3092238BDDE10058912B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D10196DE36720D678FD49D6 /* Pods-ClearDo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

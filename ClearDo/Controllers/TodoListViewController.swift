@@ -14,6 +14,7 @@ class TodoListViewController: UITableViewController {
     var itemArray = ["New"]
     var newToDo: String = ""
 
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -26,21 +27,22 @@ class TodoListViewController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TodoListViewController.handleTap))
         view.addGestureRecognizer(tapGesture)
         
-        let doubleTapgesture = UITapGestureRecognizer(target: self, action: #selector(TodoListViewController.doubleTapped))
-        doubleTapgesture.numberOfTapsRequired = 2
-        view.addGestureRecognizer(doubleTapgesture)
+//        let doubleTapgesture = UITapGestureRecognizer(target: self, action: #selector(TodoListViewController.doubleTapped))
+//        doubleTapgesture.numberOfTapsRequired = 2
+//        view.addGestureRecognizer(doubleTapgesture)
     }
     
     @objc func handleTap() {
         view.endEditing(true)
-    }
-    
-    @objc func doubleTapped() {
-        itemArray.append("")
         tableView.reloadData()
     }
     
-    // TableView data source methods
+//    @objc func doubleTapped() {
+//        itemArray.append("")
+//        tableView.reloadData()
+//    }
+    
+    // MARK: - TableView data source methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
@@ -56,17 +58,12 @@ class TodoListViewController: UITableViewController {
     }
 
 
-////     Table view delegate methods
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-//        } else {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goToTasks" {
+//            TaskCell.
 //        }
-//
-//        tableView.deselectRow(at: indexPath, animated: false)
 //    }
+
 }
 
 
