@@ -50,20 +50,10 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath) as! ReusableCell
         cell.delegate = self
-        
-//        print("\(itemArray[indexPath.row])")
         return cell
         
         
     }
-
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToTasks" {
-//            TaskCell.
-//        }
-//    }
-
 }
 
 
@@ -85,8 +75,7 @@ extension TodoListViewController: UITextFieldDelegate {
         return false
     }
     
-//    let textFieldIndex =
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         newToDo = textField.text ?? ""
         if newToDo == "" {
@@ -95,7 +84,6 @@ extension TodoListViewController: UITextFieldDelegate {
             print("\(newToDo)")
             itemArray.append(newToDo)
         }
-        //textField.becomeFirstResponder()
         tableView.reloadData()
         return true
     }

@@ -17,9 +17,10 @@ class ReusableCell: UITableViewCell, UITextFieldDelegate {
                 todoTextfield.delegate = delegate
             }
         }
+    
+        // Makes each new textfield a first responder when return is pressed
         override func awakeFromNib() {
             super.awakeFromNib()
-    //        todoTextfield.delegate = self
             todoTextfield.becomeFirstResponder()
         }
         

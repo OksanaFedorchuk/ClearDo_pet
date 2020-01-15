@@ -18,9 +18,9 @@ class TaskCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     
+    // Makes each new textfield a first responder when return is pressed
     override func awakeFromNib() {
         super.awakeFromNib()
-        taskTextField.becomeFirstResponder()
+        self.taskTextField.becomeFirstResponder()
     }
-
 }
