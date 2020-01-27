@@ -10,37 +10,52 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     
-//    var itemArray = [String]()
-    var itemArray = ["New"]
+    var itemArray = [String]()
+//    var itemArray = ["New"]
     var newToDo: String = ""
+    var addProjectButton = AddProjectButton()
 
     
     override func viewDidLoad() {
-        
+        buttonConstraints()
+        buttonAction()
         super.viewDidLoad()
         configureTapGesture()
         
+    }
+    
+    func buttonConstraints() {
+        view.addSubview(addProjectButton)
+        view.translatesAutoresizingMaskIntoConstraints = true
+    }
+    
+    func buttonAction() {
+        addProjectButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc func buttonTapped(_ sender: UIButton!) {
+        itemArray.append("")
+        tableView.reloadData()
+        print("Button tapped!")
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let  off = scrollView.contentOffset.y
+
+           addProjectButton.frame = CGRect(x: 285, y:   off + 485, width: addProjectButton.frame.size.width, height: addProjectButton.frame.size.height)
     }
     
     func configureTapGesture() {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TodoListViewController.handleTap))
         view.addGestureRecognizer(tapGesture)
-        
-//        let doubleTapgesture = UITapGestureRecognizer(target: self, action: #selector(TodoListViewController.doubleTapped))
-//        doubleTapgesture.numberOfTapsRequired = 2
-//        view.addGestureRecognizer(doubleTapgesture)
     }
     
     @objc func handleTap() {
         view.endEditing(true)
         tableView.reloadData()
     }
-    
-//    @objc func doubleTapped() {
-//        itemArray.append("")
-//        tableView.reloadData()
-//    }
     
     // MARK: - TableView data source methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,15 +73,6 @@ class TodoListViewController: UITableViewController {
 
 
 extension TodoListViewController: UITextFieldDelegate {
-    
-    
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        return true
-//    }
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//    }
-    
-
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         print("Did end editing")

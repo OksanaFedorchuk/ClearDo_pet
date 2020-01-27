@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B53751B59F22032CE315085D /* Pods_ClearDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E059C6149EEE8E5C86489E3 /* Pods_ClearDo.framework */; };
+		D701161623DE327300AA20FC /* AddProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701161523DE327300AA20FC /* AddProjectButton.swift */; };
 		D722C5B723968225008F9F50 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722C5B623968225008F9F50 /* ReusableCell.swift */; };
 		D77C3080238BDDDF0058912B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C307F238BDDDF0058912B /* AppDelegate.swift */; };
 		D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C3081238BDDDF0058912B /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 		0E059C6149EEE8E5C86489E3 /* Pods_ClearDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClearDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEDBD0BD21CB272A314F00D /* Pods-ClearDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClearDo.debug.xcconfig"; path = "Target Support Files/Pods-ClearDo/Pods-ClearDo.debug.xcconfig"; sourceTree = "<group>"; };
 		4D10196DE36720D678FD49D6 /* Pods-ClearDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClearDo.release.xcconfig"; path = "Target Support Files/Pods-ClearDo/Pods-ClearDo.release.xcconfig"; sourceTree = "<group>"; };
+		D701161523DE327300AA20FC /* AddProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectButton.swift; sourceTree = "<group>"; };
 		D722C5B623968225008F9F50 /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		D77C307C238BDDDF0058912B /* ClearDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClearDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D77C307F238BDDDF0058912B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				D77C3083238BDDDF0058912B /* TodoListViewController.swift */,
 				D7BC988223CE16CA009FAC72 /* TasksViewController.swift */,
+				D701161523DE327300AA20FC /* AddProjectButton.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				D77C3080238BDDDF0058912B /* AppDelegate.swift in Sources */,
 				D7BC988523CE33C4009FAC72 /* TaskCell.swift in Sources */,
 				D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */,
+				D701161623DE327300AA20FC /* AddProjectButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
