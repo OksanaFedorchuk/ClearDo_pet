@@ -33,12 +33,10 @@ class AddProjectButton: UIButton {
     }
 
     func setupButton() {
-        setTitleColor(.black, for: .normal)
-        setTitle("+", for: .normal)
-        backgroundColor = .gray
-        layer.frame = CGRect(x: 285, y: 485, width: 48, height: 48)
-        layer.cornerRadius = 24
-        layer.masksToBounds = true
+        backgroundColor = .white
+        layer.cornerRadius = 33
+        let image = UIImage(named: "plus")
+        setImage(image, for: .normal)
     }
 
 }

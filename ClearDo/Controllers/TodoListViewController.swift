@@ -11,7 +11,6 @@ import UIKit
 class TodoListViewController: UITableViewController {
     
     var itemArray = [String]()
-//    var itemArray = ["New"]
     var newToDo: String = ""
     var addProjectButton = AddProjectButton()
 
@@ -26,7 +25,12 @@ class TodoListViewController: UITableViewController {
     
     func buttonConstraints() {
         view.addSubview(addProjectButton)
-        view.translatesAutoresizingMaskIntoConstraints = true
+                addProjectButton.translatesAutoresizingMaskIntoConstraints = false
+        addProjectButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26).isActive = true
+        addProjectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -26).isActive = true
+        addProjectButton.widthAnchor.constraint(equalToConstant: 66).isActive = true
+        addProjectButton.heightAnchor.constraint(equalToConstant: 66).isActive = true
+
     }
     
     func buttonAction() {
