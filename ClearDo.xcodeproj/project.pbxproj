@@ -34,7 +34,7 @@
 		D77C3088238BDDE10058912B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D77C308B238BDDE10058912B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D77C308D238BDDE10058912B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7BC988223CE16CA009FAC72 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = SOURCE_ROOT; };
+		D7BC988223CE16CA009FAC72 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TasksViewController.swift; path = ClearDo/TasksViewController.swift; sourceTree = SOURCE_ROOT; };
 		D7BC988423CE33C4009FAC72 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,8 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				D77C3083238BDDDF0058912B /* TodoListViewController.swift */,
-				D7BC988223CE16CA009FAC72 /* TasksViewController.swift */,
-				D701161523DE327300AA20FC /* AddProjectButton.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -119,8 +117,10 @@
 				D70FE203239665B900AE6312 /* Views */,
 				D70FE205239665FC00AE6312 /* Controllers */,
 				D722C5B623968225008F9F50 /* ReusableCell.swift */,
-				D7BC988423CE33C4009FAC72 /* TaskCell.swift */,
+				D701161523DE327300AA20FC /* AddProjectButton.swift */,
 				D77C3088238BDDE10058912B /* Assets.xcassets */,
+				D7BC988223CE16CA009FAC72 /* TasksViewController.swift */,
+				D7BC988423CE33C4009FAC72 /* TaskCell.swift */,
 				D77C308A238BDDE10058912B /* LaunchScreen.storyboard */,
 				D77C308D238BDDE10058912B /* Info.plist */,
 			);

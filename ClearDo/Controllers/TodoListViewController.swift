@@ -10,8 +10,8 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     
-    var itemArray = [String]()
-    var newToDo: String = ""
+    var projectArray = [String]()
+    var fakeProjectArray = [String]()
     var addProjectButton = AddProjectButton()
 
     
@@ -23,14 +23,14 @@ class TodoListViewController: UITableViewController {
         
     }
     
+//    MARK: - Button to add projects
     func buttonConstraints() {
         view.addSubview(addProjectButton)
-                addProjectButton.translatesAutoresizingMaskIntoConstraints = false
+        addProjectButton.translatesAutoresizingMaskIntoConstraints = false
         addProjectButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26).isActive = true
         addProjectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -26).isActive = true
         addProjectButton.widthAnchor.constraint(equalToConstant: 66).isActive = true
         addProjectButton.heightAnchor.constraint(equalToConstant: 66).isActive = true
-
     }
     
     func buttonAction() {
@@ -38,18 +38,21 @@ class TodoListViewController: UITableViewController {
     }
     
     @objc func buttonTapped(_ sender: UIButton!) {
-        itemArray.append("")
-        tableView.reloadData()
-        print("Button tapped!")
+        defer {
+            tableView.reloadData()
+        }
+        guard fakeProjectArray.isEmpty else { return }
+        fakeProjectArray.append("")
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         let  off = scrollView.contentOffset.y
-
-           addProjectButton.frame = CGRect(x: 285, y:   off + 485, width: addProjectButton.frame.size.width, height: addProjectButton.frame.size.height)
+        addProjectButton.frame = CGRect(x: 285, y:   off + 485, width: addProjectButton.frame.size.width, height: addProjectButton.frame.size.height)
     }
     
+    
+//    MARK: - Tap on the view hides keyboard
     func configureTapGesture() {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TodoListViewController.handleTap))
@@ -62,40 +65,41 @@ class TodoListViewController: UITableViewController {
     }
     
     // MARK: - TableView data source methods
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        if section == 0 {
+            return projectArray.count
+        }
+        return fakeProjectArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath) as! ReusableCell
-        cell.delegate = self
+        cell.itemDelegate = self
         return cell
-        
-        
     }
+
 }
 
+// MARK: - Extensions
 
-extension TodoListViewController: UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        print("Did end editing")
-    }
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return false
-    }
-    
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        newToDo = textField.text ?? ""
-        if newToDo == "" {
-            textField.resignFirstResponder()
-        } else {
-            print("\(newToDo)")
-            itemArray.append(newToDo)
-        }
+extension TodoListViewController: ItemCreationable {
+    func didFinishEnetringItem(_ item: String) {
+        projectArray.append(item)
         tableView.reloadData()
-        return true
+    }
+    
+    func didCancelEntering() {
+        fakeProjectArray.removeAll()
+        tableView.reloadData()
     }
 }
+    
+
+
 
