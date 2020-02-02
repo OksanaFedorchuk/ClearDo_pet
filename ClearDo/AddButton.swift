@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddProjectButton: UIButton {
+class AddButton: UIButton {
 
     
     override init(frame: CGRect) {

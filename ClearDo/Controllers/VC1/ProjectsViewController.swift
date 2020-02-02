@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TodoListViewController: UITableViewController {
+class ProjectsViewController: UITableViewController {
     
     var projectArray = [String]()
     var fakeProjectArray = [String]()
-    var addProjectButton = AddProjectButton()
+    var addProjectButton = AddButton()
 
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class TodoListViewController: UITableViewController {
         
     }
     
-//    MARK: - Button to add projects
+//    MARK: - Add Button
     func buttonConstraints() {
         view.addSubview(addProjectButton)
         addProjectButton.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ class TodoListViewController: UITableViewController {
 //    MARK: - Tap on the view hides keyboard
     func configureTapGesture() {
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TodoListViewController.handleTap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProjectsViewController.handleTap))
         view.addGestureRecognizer(tapGesture)
     }
     
@@ -79,8 +79,8 @@ class TodoListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath) as! ReusableCell
-        cell.itemDelegate = self
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
+        cell.projectCreationDelegate = self
         return cell
     }
 
@@ -88,9 +88,9 @@ class TodoListViewController: UITableViewController {
 
 // MARK: - Extensions
 
-extension TodoListViewController: ItemCreationable {
-    func didFinishEnetringItem(_ item: String) {
-        projectArray.append(item)
+extension ProjectsViewController: ProjectCreationable {
+    func didFinishEnetringProject(_ project: String) {
+        projectArray.append(project)
         tableView.reloadData()
     }
     

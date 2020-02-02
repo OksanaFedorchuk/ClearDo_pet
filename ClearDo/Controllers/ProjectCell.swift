@@ -8,22 +8,22 @@
 
 import UIKit
 
-protocol ItemCreationable {
-    func didFinishEnetringItem(_ item: String)
+protocol ProjectCreationable {
+    func didFinishEnetringProject(_ project: String)
     func didCancelEntering()
 }
 
-class ReusableCell: UITableViewCell, UITextFieldDelegate {
+class ProjectCell: UITableViewCell, UITextFieldDelegate {
 
-    @IBOutlet weak var todoTextfield: UITextField!
+    @IBOutlet weak var projectTextfield: UITextField!
         
-    var itemDelegate: ItemCreationable?
+    var projectCreationDelegate: ProjectCreationable?
     
         // Makes each new textfield a first responder when return is pressed
         override func awakeFromNib() {
             super.awakeFromNib()
-            todoTextfield.delegate = self
-            todoTextfield.becomeFirstResponder()
+            projectTextfield.delegate = self
+            projectTextfield.becomeFirstResponder()
         }
 
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -31,12 +31,12 @@ class ReusableCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = todoTextfield.text else { return true }
+        guard let text = projectTextfield.text else { return true }
         if text.isEmpty {
-            itemDelegate?.didCancelEntering()
+            projectCreationDelegate?.didCancelEntering()
         } else {
-            itemDelegate?.didFinishEnetringItem(text)
-            todoTextfield.becomeFirstResponder()
+            projectCreationDelegate?.didFinishEnetringProject(text)
+            projectTextfield.becomeFirstResponder()
         }
         return true
     }

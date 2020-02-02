@@ -9,27 +9,27 @@
         <!--Projects-->
         <scene sceneID="kgX-ou-zvy">
             <objects>
-                <tableViewController id="waf-Ld-2zq" customClass="TodoListViewController" customModule="ClearDo" sceneMemberID="viewController">
+                <tableViewController id="waf-Ld-2zq" customClass="ProjectsViewController" customModule="ClearDo" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qae-tk-sAh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoItemCell" rowHeight="50" id="Nqm-Dk-1Ku" customClass="ReusableCell" customModule="ClearDo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProjectCell" rowHeight="50" id="Nqm-Dk-1Ku" customClass="ProjectCell" customModule="ClearDo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nqm-Dk-1Ku" id="aJu-Rm-0Ya">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="I want to do" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ig-3Z-ge7">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="I want to do" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ig-3Z-ge7" userLabel="Project Textfield">
                                             <rect key="frame" x="20" y="20" width="243" height="10"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8I-aC-LZy">
                                             <rect key="frame" x="271" y="20" width="29" height="15"/>
-                                            <state key="normal" image="list.bullet.indent" catalog="system"/>
+                                            <state key="normal" image="line.horizontal.3.decrease.circle" catalog="system"/>
                                             <connections>
                                                 <segue destination="iOQ-LZ-POT" kind="show" identifier="goToTasks" id="QOu-o5-vao"/>
                                             </connections>
@@ -48,7 +48,7 @@
                                 </tableViewCellContentView>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
-                                    <outlet property="todoTextfield" destination="3Ig-3Z-ge7" id="wC2-Bt-Xj9"/>
+                                    <outlet property="projectTextfield" destination="3Ig-3Z-ge7" id="wC2-Bt-Xj9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -61,7 +61,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cV4-nV-Xt0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="869.60000000000002" y="111.99400299850076"/>
+            <point key="canvasLocation" x="868.125" y="111.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oRK-de-bGj">
@@ -69,7 +69,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e13-Pl-tEc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oTM-K7-rnV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
@@ -113,7 +113,7 @@
                                 </tableViewCellContentView>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
-                                    <outlet property="taskTextField" destination="yqf-UX-hNe" id="J3p-LM-1N7"/>
+                                    <outlet property="taskTextField" destination="yqf-UX-hNe" id="YaI-bD-jma"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -130,6 +130,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.bullet.indent" catalog="system" width="64" height="36"/>
+        <image name="line.horizontal.3.decrease.circle" catalog="system" width="64" height="60"/>
     </resources>
 </document>
