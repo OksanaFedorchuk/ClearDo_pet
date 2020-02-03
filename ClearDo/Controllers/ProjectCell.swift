@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProjectCreationable {
-    func didFinishEnteringProject(_ project: String)
+    func didFinishEnteringProject(_ project: Task)
     func didCancelEntering()
 }
 
@@ -18,15 +18,17 @@ class ProjectCell: UITableViewCell {
     @IBOutlet weak var projectTextfield: UITextField!
         
     var projectCreationDelegate: ProjectCreationable?
-    
+    var task: Task?
+
     // Makes each new textfield a first responder when return is pressed
     override func awakeFromNib() {
         super.awakeFromNib()
         projectTextfield.delegate = self
     }
 
-    func configureWith(_ item: String) {
-        projectTextfield.text = item
+    func configureWith(_ task: Task) {
+        self.task = task
+        projectTextfield.text = self.task?.text
     }
 }
 
@@ -38,7 +40,10 @@ extension ProjectCell: UITextFieldDelegate {
         if text.isEmpty {
             projectCreationDelegate?.didCancelEntering()
         } else {
-            projectCreationDelegate?.didFinishEnteringProject(text)
+            if let task = task {
+                task.text = text
+                projectCreationDelegate?.didFinishEnteringProject(task)
+            }
         }
         return true
     }

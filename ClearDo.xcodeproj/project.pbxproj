@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B766EA8123E8B55A007AABC6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B766EA8023E8B55A007AABC6 /* Task.swift */; };
 		B7A39D4723E7731300CA72E3 /* ProjectCreationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A39D4623E7731300CA72E3 /* ProjectCreationCell.swift */; };
 		D701161623DE327300AA20FC /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701161523DE327300AA20FC /* AddButton.swift */; };
 		D722C5B723968225008F9F50 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722C5B623968225008F9F50 /* ProjectCell.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B766EA8023E8B55A007AABC6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B7A39D4623E7731300CA72E3 /* ProjectCreationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationCell.swift; sourceTree = "<group>"; };
 		D701161523DE327300AA20FC /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		D722C5B623968225008F9F50 /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectCell.swift; path = ../ProjectCell.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B766EA7F23E8B537007AABC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B766EA8023E8B55A007AABC6 /* Task.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D70FE2022396658800AE6312 /* Models */ = {
@@ -122,6 +132,7 @@
 				D70FE2022396658800AE6312 /* Models */,
 				D70FE203239665B900AE6312 /* Views */,
 				D70FE205239665FC00AE6312 /* Controllers */,
+				B766EA7F23E8B537007AABC6 /* Model */,
 				D701161523DE327300AA20FC /* AddButton.swift */,
 				D77C3088238BDDE10058912B /* Assets.xcassets */,
 				D77C308A238BDDE10058912B /* LaunchScreen.storyboard */,
@@ -208,6 +219,7 @@
 				D77C3080238BDDDF0058912B /* AppDelegate.swift in Sources */,
 				D7BC988523CE33C4009FAC72 /* TaskCell.swift in Sources */,
 				D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */,
+				B766EA8123E8B55A007AABC6 /* Task.swift in Sources */,
 				D701161623DE327300AA20FC /* AddButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

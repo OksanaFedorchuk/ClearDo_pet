@@ -10,8 +10,8 @@ import UIKit
 
 class ProjectsViewController: UITableViewController {
     
-    var projectArray = [String]()
-    var fakeProjectArray = [String]()
+    var projectArray = [Task]()
+    var fakeProjectArray = [Task]()
     var addProjectButton = AddButton()
 
     
@@ -41,7 +41,7 @@ class ProjectsViewController: UITableViewController {
             reloadTableView()
         }
         guard fakeProjectArray.isEmpty else { return }
-        fakeProjectArray.append("")
+        fakeProjectArray.append(Task.empty())
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -95,7 +95,7 @@ extension ProjectsViewController {
             cell = projectCell
         } else {
             let creationCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCreationCell", for: indexPath) as! ProjectCreationCell
-            creationCell.configureWith("")
+            creationCell.configureWith(fakeProjectArray[indexPath.row])
             creationCell.projectCreationDelegate = self
             cell = creationCell
         }
@@ -111,7 +111,9 @@ extension ProjectsViewController {
 
 // MARK: - ProjectCreationable
 extension ProjectsViewController: ProjectCreationable {
-    func didFinishEnteringProject(_ project: String) {
+    func didFinishEnteringProject(_ project: Task) {
+        fakeProjectArray.removeAll()
+        fakeProjectArray.append(Task.empty())
         projectArray.append(project)
         reloadTableView()
     }
