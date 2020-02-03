@@ -9,37 +9,43 @@
 import UIKit
 
 protocol ProjectCreationable {
-    func didFinishEnetringProject(_ project: String)
+    func didFinishEnteringProject(_ project: String)
     func didCancelEntering()
 }
 
-class ProjectCell: UITableViewCell, UITextFieldDelegate {
+class ProjectCell: UITableViewCell {
 
     @IBOutlet weak var projectTextfield: UITextField!
         
     var projectCreationDelegate: ProjectCreationable?
     
-        // Makes each new textfield a first responder when return is pressed
-        override func awakeFromNib() {
-            super.awakeFromNib()
-            projectTextfield.delegate = self
-            projectTextfield.becomeFirstResponder()
-        }
-
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        false
+    // Makes each new textfield a first responder when return is pressed
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        projectTextfield.delegate = self
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+    func configureWith(_ item: String) {
+        projectTextfield.text = item
+    }
+}
+
+
+extension ProjectCell: UITextFieldDelegate {
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         guard let text = projectTextfield.text else { return true }
         if text.isEmpty {
             projectCreationDelegate?.didCancelEntering()
         } else {
-            projectCreationDelegate?.didFinishEnetringProject(text)
-            projectTextfield.becomeFirstResponder()
+            projectCreationDelegate?.didFinishEnteringProject(text)
         }
         return true
     }
 
-}
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
+}

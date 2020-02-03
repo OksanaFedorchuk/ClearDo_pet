@@ -51,6 +51,39 @@
                                     <outlet property="projectTextfield" destination="3Ig-3Z-ge7" id="wC2-Bt-Xj9"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProjectCreationCell" rowHeight="50" id="UcF-0C-4Wc" customClass="ProjectCreationCell" customModule="ClearDo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="78" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UcF-0C-4Wc" id="6Vp-jg-yda">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="I want to do" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iwq-P8-hdl" userLabel="Project Textfield">
+                                            <rect key="frame" x="20" y="20" width="243" height="10"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-G2-dyI">
+                                            <rect key="frame" x="271" y="20" width="29" height="15"/>
+                                            <state key="normal" image="line.horizontal.3.decrease.circle" catalog="system"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zTY-G2-dyI" firstAttribute="top" secondItem="6Vp-jg-yda" secondAttribute="topMargin" constant="9" id="3aq-d5-eVN"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="zTY-G2-dyI" secondAttribute="bottom" constant="4" id="J41-4q-8yU"/>
+                                        <constraint firstItem="Iwq-P8-hdl" firstAttribute="top" secondItem="6Vp-jg-yda" secondAttribute="top" constant="20" id="RLR-s8-t4b" userLabel="Round Style Text Field.top = top + 10"/>
+                                        <constraint firstItem="zTY-G2-dyI" firstAttribute="leading" secondItem="Iwq-P8-hdl" secondAttribute="trailing" constant="8" id="U5h-VW-cSn"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zTY-G2-dyI" secondAttribute="trailing" constant="4" id="a4y-US-N85"/>
+                                        <constraint firstAttribute="trailing" secondItem="Iwq-P8-hdl" secondAttribute="trailing" constant="57" id="oF2-Xb-863" userLabel="trailing = Round Style Text Field.trailing + 10"/>
+                                        <constraint firstItem="Iwq-P8-hdl" firstAttribute="leading" secondItem="6Vp-jg-yda" secondAttribute="leading" constant="20" id="skl-YG-dru" userLabel="Round Style Text Field.leading = leading + 10"/>
+                                        <constraint firstAttribute="bottom" secondItem="Iwq-P8-hdl" secondAttribute="bottom" constant="20" id="vMX-2C-xBY" userLabel="bottom = Round Style Text Field.bottom + 10"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <outlet property="projectTextfield" destination="Iwq-P8-hdl" id="w7f-N1-vgF"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="waf-Ld-2zq" id="rLv-EG-D8u"/>
@@ -69,7 +102,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e13-Pl-tEc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oTM-K7-rnV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
@@ -130,6 +163,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.horizontal.3.decrease.circle" catalog="system" width="64" height="60"/>
+        <image name="line.horizontal.3.decrease.circle" catalog="system" width="32" height="32"/>
     </resources>
 </document>

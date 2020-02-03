@@ -16,15 +16,14 @@ class ProjectsViewController: UITableViewController {
 
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         buttonConstraints()
         buttonAction()
-        super.viewDidLoad()
         configureTapGesture()
-        
     }
     
 //    MARK: - Add Button
-    func buttonConstraints() {
+    private func buttonConstraints() {
         view.addSubview(addProjectButton)
         addProjectButton.translatesAutoresizingMaskIntoConstraints = false
         addProjectButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -26).isActive = true
@@ -33,7 +32,7 @@ class ProjectsViewController: UITableViewController {
         addProjectButton.heightAnchor.constraint(equalToConstant: 66).isActive = true
     }
     
-    func buttonAction() {
+    private func buttonAction() {
         addProjectButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
@@ -53,7 +52,7 @@ class ProjectsViewController: UITableViewController {
     
     
 //    MARK: - Tap on the view hides keyboard
-    func configureTapGesture() {
+    private func configureTapGesture() {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProjectsViewController.handleTap))
         view.addGestureRecognizer(tapGesture)
@@ -61,42 +60,65 @@ class ProjectsViewController: UITableViewController {
     
     @objc func handleTap() {
         view.endEditing(true)
-        tableView.reloadData()
+        didCancelEntering()
     }
-    
-    // MARK: - TableView data source methods
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        2
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return projectArray.count
+
+    private func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
-        return fakeProjectArray.count
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
-        cell.projectCreationDelegate = self
-        return cell
-    }
+
 
 }
 
-// MARK: - Extensions
 
+// MARK: - TableView data source methods
+
+extension ProjectsViewController {
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        section == 0 ? projectArray.count : fakeProjectArray.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        var cell: UITableViewCell!
+        if indexPath.section == 0 {
+            let projectCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
+            projectCell.configureWith(projectArray[indexPath.row])
+            projectCell.projectCreationDelegate = self
+            cell = projectCell
+        } else {
+            let creationCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCreationCell", for: indexPath) as! ProjectCreationCell
+            creationCell.configureWith("")
+            creationCell.projectCreationDelegate = self
+            cell = creationCell
+        }
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let creationCell = cell as? ProjectCreationCell else { return }
+        creationCell.projectTextfield.becomeFirstResponder()
+    }
+}
+
+
+// MARK: - ProjectCreationable
 extension ProjectsViewController: ProjectCreationable {
-    func didFinishEnetringProject(_ project: String) {
+    func didFinishEnteringProject(_ project: String) {
         projectArray.append(project)
-        tableView.reloadData()
+        reloadTableView()
     }
     
     func didCancelEntering() {
         fakeProjectArray.removeAll()
-        tableView.reloadData()
+        reloadTableView()
     }
 }
     
