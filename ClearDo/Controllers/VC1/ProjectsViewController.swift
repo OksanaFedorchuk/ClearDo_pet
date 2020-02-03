@@ -38,7 +38,7 @@ class ProjectsViewController: UITableViewController {
     
     @objc func buttonTapped(_ sender: UIButton!) {
         defer {
-            tableView.reloadData()
+            reloadTableView()
         }
         guard fakeProjectArray.isEmpty else { return }
         fakeProjectArray.append("")
