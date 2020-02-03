@@ -73,7 +73,7 @@ class ProjectsViewController: UITableViewController {
 }
 
 
-// MARK: - TableView data source methods
+// MARK: - TableView data source and delegate methods
 
 extension ProjectsViewController {
 
