@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181F178B2407C047001FDC4B /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F17892407C047001FDC4B /* Project+CoreDataClass.swift */; };
+		181F178C2407C047001FDC4B /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F178A2407C047001FDC4B /* Project+CoreDataProperties.swift */; };
+		183E3DEF2406ECB300C83BDA /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 183E3DED2406ECB300C83BDA /* DataModel.xcdatamodeld */; };
 		B766EA8123E8B55A007AABC6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B766EA8023E8B55A007AABC6 /* Task.swift */; };
 		B7A39D4723E7731300CA72E3 /* ProjectCreationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A39D4623E7731300CA72E3 /* ProjectCreationCell.swift */; };
 		D701161623DE327300AA20FC /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D701161523DE327300AA20FC /* AddButton.swift */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181F17892407C047001FDC4B /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		181F178A2407C047001FDC4B /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		183E3DEE2406ECB300C83BDA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		B766EA8023E8B55A007AABC6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B7A39D4623E7731300CA72E3 /* ProjectCreationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationCell.swift; sourceTree = "<group>"; };
 		D701161523DE327300AA20FC /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
@@ -67,6 +73,9 @@
 		D70FE2022396658800AE6312 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				181F17892407C047001FDC4B /* Project+CoreDataClass.swift */,
+				181F178A2407C047001FDC4B /* Project+CoreDataProperties.swift */,
+				183E3DED2406ECB300C83BDA /* DataModel.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7A39D4723E7731300CA72E3 /* ProjectCreationCell.swift in Sources */,
+				183E3DEF2406ECB300C83BDA /* DataModel.xcdatamodeld in Sources */,
 				D722C5B723968225008F9F50 /* ProjectCell.swift in Sources */,
 				D77C3084238BDDDF0058912B /* ProjectsViewController.swift in Sources */,
 				D7BC988323CE16CA009FAC72 /* TasksViewController.swift in Sources */,
@@ -220,6 +230,8 @@
 				D7BC988523CE33C4009FAC72 /* TaskCell.swift in Sources */,
 				D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */,
 				B766EA8123E8B55A007AABC6 /* Task.swift in Sources */,
+				181F178B2407C047001FDC4B /* Project+CoreDataClass.swift in Sources */,
+				181F178C2407C047001FDC4B /* Project+CoreDataProperties.swift in Sources */,
 				D701161623DE327300AA20FC /* AddButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +430,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		183E3DED2406ECB300C83BDA /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				183E3DEE2406ECB300C83BDA /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 183E3DEE2406ECB300C83BDA /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D77C3074238BDDDF0058912B /* Project object */;
 }
