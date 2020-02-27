@@ -22,6 +22,7 @@ class ProjectsViewController: UITableViewController {
         buttonConstraints()
         buttonAction()
         configureTapGesture()
+        loadProjects()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
@@ -83,7 +84,19 @@ class ProjectsViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
+    
+    func loadProjects() {
+        
+        let request: NSFetchRequest<Project> = Project.fetchRequest()
+        do {
+        projectArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
 }
+
+
 
 
 // MARK: - TableView data source and delegate methods
