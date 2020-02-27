@@ -21,5 +21,5 @@ extension Project {
     @NSManaged public var isDone: Bool
     @NSManaged public var createdAt: Date
     @NSManaged public var updatedAt: Date
-    
+
 }

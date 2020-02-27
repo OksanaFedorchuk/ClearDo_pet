@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 class ProjectsViewController: UITableViewController {
     
-    var projectArray = [Task]()
-    var fakeProjectArray = [Task]()
+    var projectArray = [Project]()
+    var fakeProjectArray = [Project]()
     var addProjectButton = AddButton()
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonConstraints()
         buttonAction()
         configureTapGesture()
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
 //    MARK: - Add Button
@@ -41,7 +44,7 @@ class ProjectsViewController: UITableViewController {
             reloadTableView()
         }
         guard fakeProjectArray.isEmpty else { return }
-        fakeProjectArray.append(Task.empty())
+        fakeProjectArray.append(Project.createEmptyProject(with: context))
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -69,7 +72,17 @@ class ProjectsViewController: UITableViewController {
         }
     }
 
-
+   // MARK: - Model Manipulation Methods
+    
+    func saveProjects() {
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving project \(error)")
+        }
+        self.tableView.reloadData()
+    }
 }
 
 
@@ -111,10 +124,12 @@ extension ProjectsViewController {
 
 // MARK: - ProjectCreationable
 extension ProjectsViewController: ProjectCreationable {
-    func didFinishEnteringProject(_ project: Task) {
+    
+    func didFinishEnteringProject(_ project: Project) {
         fakeProjectArray.removeAll()
-        fakeProjectArray.append(Task.empty())
+        fakeProjectArray.append(Project.createEmptyProject(with: context))
         projectArray.append(project)
+        saveProjects()
         reloadTableView()
     }
     
