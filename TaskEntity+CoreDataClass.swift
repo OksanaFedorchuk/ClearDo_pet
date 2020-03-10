@@ -11,13 +11,10 @@ import Foundation
 import CoreData
 
 @objc(Project)
-public class Project: NSManagedObject {
+public class TaskEntity: NSManagedObject {
 
-    
-    
-    
     convenience init(projectName: String?, isDone: Bool, createdAt: Date, updatedAt: Date, entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
-        let entity = NSEntityDescription.entity(forEntityName: "Project", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: "TaskEntity", in: context)
         self.init(entity: entity!, insertInto: context)
 //        self.aContext = context
         self.projectName = projectName
@@ -27,9 +24,9 @@ public class Project: NSManagedObject {
     }
     
     
-    static func createEmptyProject(with context: NSManagedObjectContext) -> Project {
+    static func createEmptyProject(with context: NSManagedObjectContext) -> TaskEntity {
 //        let aContext: NSManagedObjectContext? = nil
-        return Project(projectName: nil, isDone: false, createdAt: Date(), updatedAt: Date(), entity: entity(), insertIntoManagedObjectContext: context)
+        return TaskEntity(projectName: nil, isDone: false, createdAt: Date(), updatedAt: Date(), entity: entity(), insertIntoManagedObjectContext: context)
     }
 
 }

@@ -11,10 +11,12 @@ import CoreData
 
 class ProjectsViewController: UITableViewController {
     
-    var projectArray = [Project]()
-    var fakeProjectArray = [Project]()
+    var taskEntities = [TaskEntity]()
+    
+    var tasks = [Task]()
+    var fakeTasks = [Task]()
     var addProjectButton = AddButton()
-
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -23,10 +25,10 @@ class ProjectsViewController: UITableViewController {
         buttonAction()
         configureTapGesture()
         loadProjects()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
-//    MARK: - Add Button
+    //    MARK: - Add Button
     private func buttonConstraints() {
         view.addSubview(addProjectButton)
         addProjectButton.translatesAutoresizingMaskIntoConstraints = false
@@ -44,18 +46,18 @@ class ProjectsViewController: UITableViewController {
         defer {
             reloadTableView()
         }
-        guard fakeProjectArray.isEmpty else { return }
-        fakeProjectArray.append(Project.createEmptyProject(with: context))
+        guard fakeTasks.isEmpty else { return }
+        fakeTasks.append(Task.empty())
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        
         let  off = scrollView.contentOffset.y
         addProjectButton.frame = CGRect(x: 285, y:   off + 485, width: addProjectButton.frame.size.width, height: addProjectButton.frame.size.height)
     }
     
     
-//    MARK: - Tap on the view hides keyboard
+    //    MARK: - Tap on the view hides keyboard
     private func configureTapGesture() {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProjectsViewController.handleTap))
@@ -66,14 +68,14 @@ class ProjectsViewController: UITableViewController {
         view.endEditing(true)
         didCancelEntering()
     }
-
+    
     private func reloadTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-
-   // MARK: - Model Manipulation Methods
+    
+    // MARK: - Model Manipulation Methods
     
     func saveProjects() {
         
@@ -82,20 +84,39 @@ class ProjectsViewController: UITableViewController {
         } catch {
             print("Error saving project \(error)")
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     func loadProjects() {
-        
-        let request: NSFetchRequest<Project> = Project.fetchRequest()
+
+        let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        let sortingByDate = NSSortDescriptor(key: "createdAt", ascending: true)
+        request.sortDescriptors = [sortingByDate]
         do {
-        projectArray = try context.fetch(request)
+            taskEntities = try context.fetch(request)
+            tasks = makeTaskFromTaskEntity(taskEntity: taskEntities)
+            
         } catch {
             print("Error fetching data from context \(error)")
         }
+        tableView.reloadData()
     }
-}
+    
+    func makeProjectFrom(task: Task) -> TaskEntity {
+        let entity = NSEntityDescription.entity(forEntityName: "TaskEntity", in: context)
+        let newProject = TaskEntity(projectName: task.text, isDone: task.isDone, createdAt: task.createdAt, updatedAt: task.updatedAt, entity: entity!, insertIntoManagedObjectContext: context)
+        return newProject
+    }
+    
+    func makeTaskFromTaskEntity(taskEntity: [TaskEntity]) -> [Task] {
+        taskEntity.map { Task(text: $0.projectName, createdAt: $0.createdAt ?? Date(), updatedAt: $0.updatedAt ?? Date()) }
+    }
 
+//    func editTask(taskEdited: Task) {
+//        
+//    }
+    
+}
 
 
 
@@ -103,31 +124,40 @@ class ProjectsViewController: UITableViewController {
 
 extension ProjectsViewController {
 
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? projectArray.count : fakeProjectArray.count
+        section == 0 ? tasks.count : fakeTasks.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         var cell: UITableViewCell!
         if indexPath.section == 0 {
             let projectCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
-            projectCell.configureWith(projectArray[indexPath.row])
+
+            projectCell.configureWith(tasks[indexPath.row])
             projectCell.projectCreationDelegate = self
             cell = projectCell
         } else {
             let creationCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCreationCell", for: indexPath) as! ProjectCreationCell
-            creationCell.configureWith(fakeProjectArray[indexPath.row])
+            creationCell.configureWith(fakeTasks[indexPath.row])
             creationCell.projectCreationDelegate = self
             cell = creationCell
         }
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+            //put edited value here
+
+        print("\(String(describing: tasks[indexPath.row].text))")
+    }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let creationCell = cell as? ProjectCreationCell else { return }
         creationCell.projectTextfield.becomeFirstResponder()
@@ -138,20 +168,21 @@ extension ProjectsViewController {
 // MARK: - ProjectCreationable
 extension ProjectsViewController: ProjectCreationable {
     
-    func didFinishEnteringProject(_ project: Project) {
-        fakeProjectArray.removeAll()
-        fakeProjectArray.append(Project.createEmptyProject(with: context))
-        projectArray.append(project)
+    func didFinishEnteringProject(_ taskEntered: Task) {
+        fakeTasks.removeAll()
+        taskEntities.append(makeProjectFrom(task: taskEntered))
         saveProjects()
+        loadProjects()
+        fakeTasks.append(Task.empty())
         reloadTableView()
     }
     
     func didCancelEntering() {
-        fakeProjectArray.removeAll()
+        fakeTasks.removeAll()
         reloadTableView()
     }
 }
-    
+
 
 
 

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		181F178B2407C047001FDC4B /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F17892407C047001FDC4B /* Project+CoreDataClass.swift */; };
+		181F178B2407C047001FDC4B /* TaskEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F17892407C047001FDC4B /* TaskEntity+CoreDataClass.swift */; };
 		183E3DEF2406ECB300C83BDA /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 183E3DED2406ECB300C83BDA /* DataModel.xcdatamodeld */; };
 		B766EA8123E8B55A007AABC6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B766EA8023E8B55A007AABC6 /* Task.swift */; };
 		B7A39D4723E7731300CA72E3 /* ProjectCreationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A39D4623E7731300CA72E3 /* ProjectCreationCell.swift */; };
@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		181F17892407C047001FDC4B /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		181F17892407C047001FDC4B /* TaskEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		183E3DEE2406ECB300C83BDA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		B766EA8023E8B55A007AABC6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B7A39D4623E7731300CA72E3 /* ProjectCreationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationCell.swift; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		D70FE2022396658800AE6312 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				181F17892407C047001FDC4B /* Project+CoreDataClass.swift */,
+				181F17892407C047001FDC4B /* TaskEntity+CoreDataClass.swift */,
 				183E3DED2406ECB300C83BDA /* DataModel.xcdatamodeld */,
 			);
 			path = Models;
@@ -227,7 +227,7 @@
 				D7BC988523CE33C4009FAC72 /* TaskCell.swift in Sources */,
 				D77C3082238BDDDF0058912B /* SceneDelegate.swift in Sources */,
 				B766EA8123E8B55A007AABC6 /* Task.swift in Sources */,
-				181F178B2407C047001FDC4B /* Project+CoreDataClass.swift in Sources */,
+				181F178B2407C047001FDC4B /* TaskEntity+CoreDataClass.swift in Sources */,
 				D701161623DE327300AA20FC /* AddButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

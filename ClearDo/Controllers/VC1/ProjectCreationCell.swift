@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
+
 class ProjectCreationCell: ProjectCell {
-
-
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        projectTextfield.delegate = self
+    }
 }
