@@ -7,15 +7,18 @@
 
 
 import Foundation
+import CoreData
 
 class Task {
 
+    var objectId: NSManagedObjectID?
     var text: String?
     var isDone: Bool
     var createdAt: Date
     var updatedAt: Date
 
-    init(text: String?, isDone: Bool = false, createdAt: Date, updatedAt: Date) {
+    init(objectId: NSManagedObjectID?, text: String?, isDone: Bool = false, createdAt: Date, updatedAt: Date) {
+        self.objectId = objectId
         self.isDone = isDone
         self.text = text
         self.createdAt = createdAt
@@ -23,7 +26,7 @@ class Task {
     }
 
     static func empty() -> Task {
-        Task(text: nil, createdAt: Date(), updatedAt: Date())
+        Task(objectId: nil, text: nil, createdAt: Date(), updatedAt: Date())
     }
 
 }

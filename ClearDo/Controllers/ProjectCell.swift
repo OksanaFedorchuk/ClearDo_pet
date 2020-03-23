@@ -11,13 +11,15 @@ import UIKit
 
 protocol ProjectCreationable {
     func didFinishEnteringProject(_ taskEntered: Task)
+    func didFinishEditingProject(_ taskEdited: Task)
     func didCancelEntering()
 }
+
 
 class ProjectCell: UITableViewCell {
 
     @IBOutlet weak var projectTextfield: UITextField!
-        
+    
     var projectCreationDelegate: ProjectCreationable?
     var task: Task?
 
@@ -46,13 +48,18 @@ extension ProjectCell: UITextFieldDelegate {
         guard let text = projectTextfield.text else { return true }
         if text.isEmpty {
             projectCreationDelegate?.didCancelEntering()
-        }
-        else {
+        } else {
             if let task = task {
-            task.text = text
-            projectCreationDelegate?.didFinishEnteringProject(task)
+                task.text = text
+                if self is ProjectCreationCell {
+                    projectCreationDelegate?.didFinishEnteringProject(task)
+                } else {
+                    projectCreationDelegate?.didFinishEditingProject(task)
                 }
+                
             }
+        }
+        
         return true
     }
 

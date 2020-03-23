@@ -16,7 +16,6 @@ public class TaskEntity: NSManagedObject {
     convenience init(projectName: String?, isDone: Bool, createdAt: Date, updatedAt: Date, entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         let entity = NSEntityDescription.entity(forEntityName: "TaskEntity", in: context)
         self.init(entity: entity!, insertInto: context)
-//        self.aContext = context
         self.projectName = projectName
         self.isDone = isDone
         self.createdAt = createdAt
@@ -25,7 +24,6 @@ public class TaskEntity: NSManagedObject {
     
     
     static func createEmptyProject(with context: NSManagedObjectContext) -> TaskEntity {
-//        let aContext: NSManagedObjectContext? = nil
         return TaskEntity(projectName: nil, isDone: false, createdAt: Date(), updatedAt: Date(), entity: entity(), insertIntoManagedObjectContext: context)
     }
 

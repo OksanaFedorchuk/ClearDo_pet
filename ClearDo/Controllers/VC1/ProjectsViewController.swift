@@ -25,7 +25,7 @@ class ProjectsViewController: UITableViewController {
         buttonAction()
         configureTapGesture()
         loadProjects()
-//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
     //    MARK: - Add Button
@@ -62,6 +62,7 @@ class ProjectsViewController: UITableViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProjectsViewController.handleTap))
         view.addGestureRecognizer(tapGesture)
+        tapGesture.cancelsTouchesInView = false
     }
     
     @objc func handleTap() {
@@ -102,6 +103,10 @@ class ProjectsViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func updateEntity() {
+        
+    }
+    
     func makeProjectFrom(task: Task) -> TaskEntity {
         let entity = NSEntityDescription.entity(forEntityName: "TaskEntity", in: context)
         let newProject = TaskEntity(projectName: task.text, isDone: task.isDone, createdAt: task.createdAt, updatedAt: task.updatedAt, entity: entity!, insertIntoManagedObjectContext: context)
@@ -109,12 +114,20 @@ class ProjectsViewController: UITableViewController {
     }
     
     func makeTaskFromTaskEntity(taskEntity: [TaskEntity]) -> [Task] {
-        taskEntity.map { Task(text: $0.projectName, createdAt: $0.createdAt ?? Date(), updatedAt: $0.updatedAt ?? Date()) }
+        taskEntity.map { Task(objectId: $0.objectID, text: $0.projectName, createdAt: $0.createdAt ?? Date(), updatedAt: $0.updatedAt ?? Date()) }
     }
 
-//    func editTask(taskEdited: Task) {
-//        
-//    }
+    func editTask(taskEdited: Task) {
+        let fetchEdited = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskEntity")
+        
+        fetchEdited.predicate = NSPredicate(format: "self == %@", taskEdited.objectId!)
+        do {
+            let result = try context.fetch(fetchEdited)
+            (result.first as? NSManagedObject)?.setValue(taskEdited.text, forKey: "projectName")
+        } catch {
+            print("Error fetching the edited task \(error)")
+        }
+    }
     
 }
 
@@ -151,13 +164,6 @@ extension ProjectsViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-            //put edited value here
-
-        print("\(String(describing: tasks[indexPath.row].text))")
-    }
-    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let creationCell = cell as? ProjectCreationCell else { return }
         creationCell.projectTextfield.becomeFirstResponder()
@@ -176,7 +182,12 @@ extension ProjectsViewController: ProjectCreationable {
         fakeTasks.append(Task.empty())
         reloadTableView()
     }
-    
+    func didFinishEditingProject(_ taskEdited: Task) {
+        editTask(taskEdited: taskEdited)
+        saveProjects()
+        loadProjects()
+
+    }
     func didCancelEntering() {
         fakeTasks.removeAll()
         reloadTableView()
